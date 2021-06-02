@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate x:Key="CamerasTemplate">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Camera Name:" FontWeight="SemiBold" />
+                <TextBlock Text="{Binding CameraName}" />
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <Style x:Key="RoundButton" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Name="border"
+                        BorderThickness="1"
+                        Padding="4,2"
+                        BorderBrush="Black"
+                        CornerRadius="3"
+                        Background="GhostWhite"
+                        >
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="LightBlue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource RoundButton}" TargetType="Button" x:Key="ControlButton">
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="25" />
+    </Style>
+</ResourceDictionary>
